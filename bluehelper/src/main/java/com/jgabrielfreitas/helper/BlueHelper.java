@@ -32,7 +32,7 @@ public class BlueHelper {
             getAdapter().enable();
 
         if (bluetoothStateListener != null)
-            bluetoothStateListener.onStateOn();
+            bluetoothStateListener.onStateOff();
     }
 
     /**
