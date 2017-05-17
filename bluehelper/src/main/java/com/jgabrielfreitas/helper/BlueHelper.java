@@ -29,7 +29,7 @@ public class BlueHelper {
      */
     public void enable() {
         if (currentState() == OFF)
-            bluetoothAdapter().enable();
+            getAdapter().enable();
 
         if (bluetoothStateListener != null)
             bluetoothStateListener.onStateOn();
@@ -40,17 +40,17 @@ public class BlueHelper {
      */
     public void disable() {
         if (currentState() == ON)
-            bluetoothAdapter().disable();
+            getAdapter().disable();
 
         if (bluetoothStateListener != null)
             bluetoothStateListener.onStateOn();
     }
 
     private boolean currentState() {
-        return bluetoothAdapter().isEnabled();
+        return getAdapter().isEnabled();
     }
 
-    public BluetoothAdapter bluetoothAdapter() {
+    public BluetoothAdapter getAdapter() {
         return getDefaultAdapter();
     }
 
