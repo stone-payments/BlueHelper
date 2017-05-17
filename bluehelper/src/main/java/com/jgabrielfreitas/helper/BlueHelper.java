@@ -2,6 +2,8 @@ package com.jgabrielfreitas.helper;
 
 import android.bluetooth.BluetoothAdapter;
 
+import com.jgabrielfreitas.helper.listeners.BluetoothListener.StateListener;
+
 import static android.bluetooth.BluetoothAdapter.getDefaultAdapter;
 
 /**
@@ -12,6 +14,15 @@ public class BlueHelper {
 
     final boolean ON  = true;
     final boolean OFF = false;
+    private StateListener bluetoothStateListener;
+
+    public BlueHelper() {
+    }
+
+    public BlueHelper(StateListener bluetoothStateListener) {
+        this();
+        this.bluetoothStateListener = bluetoothStateListener;
+    }
 
     /**
      * turn bluetooth on if it's already off
@@ -19,6 +30,9 @@ public class BlueHelper {
     public void enable() {
         if (currentState() == OFF)
             bluetoothAdapter().enable();
+
+        if (bluetoothStateListener != null)
+            bluetoothStateListener.onStateOn();
     }
 
     /**
@@ -27,6 +41,9 @@ public class BlueHelper {
     public void disable() {
         if (currentState() == ON)
             bluetoothAdapter().disable();
+
+        if (bluetoothStateListener != null)
+            bluetoothStateListener.onStateOn();
     }
 
     private boolean currentState() {
