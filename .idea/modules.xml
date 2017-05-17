@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BluetoothHelper.iml" filepath="$PROJECT_DIR$/BluetoothHelper.iml" />
       <module fileurl="file://$PROJECT_DIR$/BluetoothHelperDemo.iml" filepath="$PROJECT_DIR$/BluetoothHelperDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bluehelper/bluehelper.iml" filepath="$PROJECT_DIR$/bluehelper/bluehelper.iml" />
     </modules>
   </component>
 </project>
