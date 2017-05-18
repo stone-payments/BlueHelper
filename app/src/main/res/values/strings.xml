@@ -2,4 +2,5 @@
   <string name="app_name">BluetoothHelper Demo</string>
     <string name="enable_bluetooth">Enable Bluetooth</string>
   <string name="disable_bluetooth">Disable Bluetooth</string>
+  <string name="make_discoverable">Make Discoverable</string>
 </resources>

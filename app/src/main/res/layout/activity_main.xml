@@ -4,6 +4,13 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/discoverableButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/make_discoverable"
+        />
+    <Button
         android:id="@+id/enableBluetoothButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

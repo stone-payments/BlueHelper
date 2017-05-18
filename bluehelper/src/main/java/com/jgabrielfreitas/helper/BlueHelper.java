@@ -1,10 +1,14 @@
 package com.jgabrielfreitas.helper;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 
+import com.jgabrielfreitas.helper.actions.DiscoverableAction;
+import com.jgabrielfreitas.helper.exceptions.BluetoothNotEnabledException;
 import com.jgabrielfreitas.helper.listeners.BluetoothListener.StateListener;
 
 import static android.bluetooth.BluetoothAdapter.getDefaultAdapter;
+import static com.jgabrielfreitas.helper.BluetoothManager.getAdapter;
 
 /**
  * Created by JGabrielFreitas on 16/05/17.
@@ -16,8 +20,7 @@ public class BlueHelper {
     final boolean OFF = false;
     private StateListener bluetoothStateListener;
 
-    public BlueHelper() {
-    }
+    public BlueHelper() {}
 
     public BlueHelper(StateListener bluetoothStateListener) {
         this();
@@ -28,7 +31,7 @@ public class BlueHelper {
      * turn bluetooth on if it's already off
      */
     public void enable() {
-        if (currentState() == OFF)
+        if (BluetoothManager.isEnabled() == OFF)
             getAdapter().enable();
 
         if (bluetoothStateListener != null)
@@ -39,19 +42,16 @@ public class BlueHelper {
      * turn bluetooth off if it's already on
      */
     public void disable() {
-        if (currentState() == ON)
+        if (BluetoothManager.isEnabled() == ON)
             getAdapter().disable();
 
         if (bluetoothStateListener != null)
             bluetoothStateListener.onStateOff();
     }
 
-    private boolean currentState() {
-        return getAdapter().isEnabled();
-    }
-
-    public BluetoothAdapter getAdapter() {
-        return getDefaultAdapter();
+    public void makeDiscoverable(Activity activity) throws BluetoothNotEnabledException {
+        int TWO_SECONDS = 2;
+        new DiscoverableAction(activity).makeDiscoverable(TWO_SECONDS);
     }
 
 }
