@@ -1,6 +1,8 @@
 package com.jgabrielfreitas.helper;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import java.util.Set;
 
 import static android.bluetooth.BluetoothAdapter.getDefaultAdapter;
 
@@ -23,4 +25,19 @@ public class BluetoothManager {
   public static BluetoothAdapter getAdapter() {
     return getDefaultAdapter();
   }
+
+  /**
+   * Get all paired devices
+   * */
+  public static Set<BluetoothDevice> getPairedDevices() {
+    return getAdapter().getBondedDevices();
+  }
+
+  public static void startSearch() {
+    if (getAdapter().isDiscovering()) {
+      getAdapter().cancelDiscovery();
+      getAdapter().startDiscovery();
+    } else getAdapter().startDiscovery();
+  }
+
 }

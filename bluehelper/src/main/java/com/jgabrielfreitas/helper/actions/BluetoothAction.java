@@ -8,9 +8,13 @@ import android.app.Activity;
 
 abstract class BluetoothAction {
 
-  Activity activity;
+  private Activity activity;
 
   public BluetoothAction(Activity activity) {
     this.activity = activity;
+  }
+
+  public Activity getActivity() {
+    return activity;
   }
 }

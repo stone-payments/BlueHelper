@@ -26,7 +26,7 @@ public class DiscoverableAction extends BluetoothAction {
     if (BluetoothManager.isEnabled() == ON) {
       Intent discoverableIntent = new Intent(ACTION_REQUEST_DISCOVERABLE);
       discoverableIntent.putExtra(EXTRA_DISCOVERABLE_DURATION, TIME_TO_BE_DISCOVERABLE_STAMP);
-      activity.startActivity(discoverableIntent);
+      getActivity().startActivity(discoverableIntent);
     } else throw new BluetoothNotEnabledException();
   }
 
