@@ -65,15 +65,9 @@ public class DiscoveryDevicesAction extends BluetoothAction {
   }
 
   public void startSearchForDevices() throws NoSearchListenerFoundException {
+
     if (discoveryListener != null) {
-      IntentFilter filter = new IntentFilter();
-
-      filter.addAction(ACTION_FOUND);
-      filter.addAction(ACTION_DISCOVERY_STARTED);
-      filter.addAction(ACTION_DISCOVERY_FINISHED);
-      filter.addAction(EXTRA_DEVICE);
-
-      getActivity().registerReceiver(devicesReceiver, filter);
+      getActivity().registerReceiver(devicesReceiver, interactionFilter());
       BluetoothManager.startSearch();
     } else throw new NoSearchListenerFoundException();
   }
@@ -82,4 +76,15 @@ public class DiscoveryDevicesAction extends BluetoothAction {
     if (getActivity() != null)
       getActivity().unregisterReceiver(devicesReceiver);
   }
+
+  private IntentFilter interactionFilter() {
+
+    IntentFilter filter = new IntentFilter();
+    filter.addAction(ACTION_FOUND); // for a device found
+    filter.addAction(ACTION_DISCOVERY_STARTED); // tells when start the search
+    filter.addAction(ACTION_DISCOVERY_FINISHED); // tells when the search ends
+    filter.addAction(EXTRA_DEVICE); // called for new devices
+    return filter;
+  }
+
 }
